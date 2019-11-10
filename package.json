@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Playwarrior/NoSQL-Assessment-2.2/issues"
   },
-  "homepage": "https://github.com/Playwarrior/NoSQL-Assessment-2.2#readme"
+  "homepage": "https://github.com/Playwarrior/NoSQL-Assessment-2.2#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mocha": "^6.2.2",
+    "mongoose": "^5.7.9",
+    "nodemon": "^1.19.4"
+  }
 }
