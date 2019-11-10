@@ -1,0 +1,19 @@
+{
+  "name": "nosql-assessment-2.2",
+  "version": "1.0.0",
+  "description": "23INVT2B - Robin Egberts (2136993) &amp; Bryan Kho (2136024) - NoSQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Playwarrior/NoSQL-Assessment-2.2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Playwarrior/NoSQL-Assessment-2.2/issues"
+  },
+  "homepage": "https://github.com/Playwarrior/NoSQL-Assessment-2.2#readme"
+}
