@@ -13,14 +13,6 @@ mongoose.connect(connection, {
     useFindAndModify: false
 });
 
-
-
-mongoose.connection.once('open', () => {
-   console.log('Connection is open!');
-}).on('error', (error) => {
-   console.warn('Connection failed!', error);
-});
-
 app.all('*', function (req, res, next) {
     next();
 });
@@ -34,7 +26,12 @@ function errorHandler(err, req, res, next) {
 
 app.use(errorHandler);
 
-const port = 8080;
-app.listen(port, () => {
-   console.log('Server is open!');
+mongoose.connection.once('open', () => {
+    const port = 8080;
+    app.listen(port, () => {
+        console.log('Server is open!');
+    });
+}).on('error', (error) => {
+    console.warn('Connection failed!', error);
 });
+
