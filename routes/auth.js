@@ -59,7 +59,7 @@ router.post('/login', (req, res, next) => {
 				if (bcrypt.compareSync(b.password, result.password)) {
 					logger.log(`Logged in: user '${result.userName}'`);
 
-					const token = jwt.encodeToken(result.userName);
+					const token = jwt.encodeToken(result._id);
 
 					res.status(200).json({
 						description: 'Succesful login!',

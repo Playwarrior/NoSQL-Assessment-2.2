@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+const assert = require('assert');
+
 const Comment = require('../../models/comment');
+
+//TODO: ADD AUTHORISATION!
 
 router.get('', (req, res, next) => {
     Comment.find({}).then((comments) => {
@@ -36,6 +40,36 @@ router.get('/:id/votes', (req, res, next) => {
     }).catch((error) => {
         next(error);
     });
+});
+
+router.put('/:id', (req, res, next) => {
+    try {
+        assert(req.params.id.length === 19, 'Invalid id');
+
+        Comment.findByIdAndUpdate(req.params.id, {
+            content: req.body.content
+        }).then(() => {
+            res.status(200).json('Comment has been updated!');
+        }).catch((error) => {
+            next(error);
+        })
+    } catch (ex) {
+        next(ex);
+    }
+});
+
+router.delete('/:id', (req, res, next) => {
+    try {
+        assert(req.params.id.length === 19, 'Invalid id');
+
+        Comment.findByIdAndRemove(req.params.id).then(() => {
+            res.status(204).json('Comment deleted!');
+        }).catch((error) => {
+            next(error);
+        });
+    } catch (ex) {
+        next(ex);
+    }
 });
 
 
