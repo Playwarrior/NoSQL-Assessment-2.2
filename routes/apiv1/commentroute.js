@@ -23,25 +23,6 @@ router.get('/:id', (req, res, next) => {
     });
 });
 
-router.get('/:id/votes', (req, res, next) => {
-    let upvote = req.query.vote;
-
-    //TODO
-
-    upvote = upvote !== undefined ? upvote !== 0 : true;
-
-    Comment.find({_id: req.params.id}, {
-        votesOfUsers: 1
-    }).populate({
-        path: 'userId',
-        model: 'user'
-    }).then((objects) => {
-        res.status(200).json(objects);
-    }).catch((error) => {
-        next(error);
-    });
-});
-
 router.put('/:id', (req, res, next) => {
     try {
         assert(req.params.id.length === 19, 'Invalid id');
@@ -53,6 +34,56 @@ router.put('/:id', (req, res, next) => {
         }).catch((error) => {
             next(error);
         })
+    } catch (ex) {
+        next(ex);
+    }
+});
+
+router.put('/:id/upvote', (req, res, next) => {
+    try {
+        assert(req.params.length === 19, 'Invalid id');
+
+        Comment.findById(req.params.id).then((comment) => {
+            let upVotes = comment.votesOfUsers.upVotes;
+            let downVotes = comment.votesOfUsers.downVotes;
+
+            upVotes.push(res.get('id'));
+            downVotes.remove(res.get('id'));
+
+            Comment.findByIdAndUpdate(req.params.id, {
+                votesOfUsers: {
+                    upVotes: upVotes,
+                    downVotes: downVotes
+                }
+            }).then(() => {
+                res.status(200).json('Upvoted comment!');
+            });
+        });
+    } catch (ex) {
+        next(ex);
+    }
+});
+
+router.put('/:id/downvote', (req, res, next) => {
+    try {
+        assert(req.params.length === 19, 'Invalid id');
+
+        Comment.findById(req.params.id).then((comment) => {
+            let upVotes = comment.votesOfUsers.upVotes;
+            let downVotes = comment.votesOfUsers.downVotes;
+
+            upVotes.remove(res.get('id'));
+            downVotes.push(res.get('id'));
+
+            Comment.findByIdAndUpdate(req.params.id, {
+                votesOfUsers: {
+                    upVotes: upVotes,
+                    downVotes: downVotes
+                }
+            }).then(() => {
+                res.status(200).json('Upvoted thread!');
+            });
+        });
     } catch (ex) {
         next(ex);
     }

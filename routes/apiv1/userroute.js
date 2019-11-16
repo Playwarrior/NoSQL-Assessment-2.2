@@ -29,6 +29,8 @@ router.get('/threads', (req, res, next) => {
     });
 });
 
+
+
 router.delete('', (req, res, next) => {
     User.findByIdAndRemove(res.get('id')).then(() => {
         res.status(200).json('user deleted!');
