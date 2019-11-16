@@ -6,7 +6,23 @@ const assert = require('assert');
 const Thread = require('../../models/thread');
 const Comment = require('../../models/comment');
 
-//TODO: MAYBE ADD AUTHORISATION TO DETERMINE IF THE USER CAN EDIT / DELETE THE COMMENT!
+function getSortCriteria(query) {
+    const sort = {};
+
+    if (query.upvotes) {
+        sort.upVotesCount = 1;
+    }
+
+    if (query.downvotes) {
+        sort.downVotesCount = 1;
+    }
+
+    if (query.comments) {
+        sort.commentCount = 1;
+    }
+
+    return sort;
+}
 
 router.post('', (req, res, next) => {
     try {
@@ -76,8 +92,10 @@ router.put('/:id/upvote', (req, res, next) => {
             let upVotes = thread.votesOfUsers.upVotes;
             let downVotes = thread.votesOfUsers.downVotes;
 
-            upVotes.push(res.get('id'));
-            downVotes.remove(res.get('id'));
+            if (!upVotes.includes(res.get('id'))) {
+                upVotes.push(res.get('id'));
+                downVotes.remove(res.get('id'));
+            }
 
             Thread.findByIdAndUpdate(req.params.id, {
                 votesOfUsers: {
@@ -101,8 +119,10 @@ router.put('/:id/downvote', (req, res, next) => {
             let upVotes = thread.votesOfUsers.upVotes;
             let downVotes = thread.votesOfUsers.downVotes;
 
-            upVotes.remove(res.get('id'));
-            downVotes.push(res.get('id'));
+            if (!downVotes.includes(res.get('id'))) {
+                upVotes.remove(res.get('id'));
+                downVotes.push(res.get('id'));
+            }
 
             Thread.findByIdAndUpdate(req.params.id, {
                 votesOfUsers: {
@@ -119,7 +139,7 @@ router.put('/:id/downvote', (req, res, next) => {
 });
 
 router.get('', (req, res, next) => {
-    Thread.find().then((threads) => {
+    Thread.find().sort(getSortCriteria(req.query)).then((threads) => {
         res.status(200).json(threads);
     }).catch((error) => {
         next(error);
@@ -152,9 +172,10 @@ router.put('/:id', (req, res, next) => {
     try {
         assert(req.params.id.length === 19, 'Invalid id');
 
-        Thread.findByIdAndUpdate(req.params.id, {
+        Thread.findOneAndUpdate({_id: req.params.id, userId: res.get('id')}, {
             content: req.body.content
         }).then(() => {
+            //TODO: ADD MESSAGE WHEN AUTHORISATION IS NOT VALID!
             res.status(200).json('Thread is updated!');
         }).catch((error) => {
             next(error);
@@ -168,13 +189,12 @@ router.delete('/:id', (req, res, next) => {
     try {
         assert(req.params.id.length === 19, 'Invalid id');
 
-
-        Promise.all([Thread.findByIdAndRemove(req.params.id), Comment.deleteMany({threadId: req.params.id})]).then(() => {
+        Promise.all([Thread.findOneAndRemove({_id: req.params.id, userId: res.get('id')}), Comment.deleteMany({threadId: req.params.id})]).then(() => {
+            //TODO: ADD MESSAGE WHEN AUTHORISATION IS NOT VALID!
             res.status(200).json('Thread has been deleted!');
         }).catch((error) => {
             next(error);
         });
-
     } catch (ex) {
         next(ex);
     }
