@@ -24,6 +24,7 @@
 		"mocha": "^6.2.2",
 		"moment": "^2.24.0",
 		"mongoose": "^5.7.9",
+		"neo4j-driver": "^1.7.6",
 		"nodemon": "^1.19.4",
 		"tracer": "^1.0.1"
 	}
