@@ -12,7 +12,7 @@ const UserSchema = new Schema(
 				msg: `UserName is not valid! (Can only contain lower- and uppercase letters and numbers. Min characters: 3, max characters: 20).`
 			},
 			required: [ true, 'userName is required (min. 3 tokens, max. 20 tokens)' ],
-			unique: true
+			unique: [ true, 'Sorry, username is already in use!' ]
 		},
 		password: {
 			type: String,
