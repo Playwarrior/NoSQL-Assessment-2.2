@@ -13,7 +13,7 @@ const ThreadSchema = new Schema(
 				validator: function(v) {
 					return /^.{1,100}$/.test(v);
 				},
-				message: (props) => `${props.value} is empty or exceeds 100 characters!`
+				msg: 'is empty or exceeds 100 characters!'
 			},
 			required: [ true, 'Title is required (max. characters: 100)' ]
 		},
@@ -23,7 +23,7 @@ const ThreadSchema = new Schema(
 				validator: function(v) {
 					return /^.+$/.test(v);
 				},
-				message: (props) => `${props.value} is not valid or is empty!`
+				msg: 'Content is not valid or is empty!'
 			},
 			required: [ true, 'Content/Description is required' ]
 		},
