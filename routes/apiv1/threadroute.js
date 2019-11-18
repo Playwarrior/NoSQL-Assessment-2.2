@@ -43,9 +43,9 @@ router.post('', (req, res, next) => {
 });
 
 router.post('/:id/comment', (req, res, next) => {
-    try {
-        assert(req.params.id.length === 19, 'Invalid id');
+    //TODO: CHECK IF THREAD EXISTS
 
+    try {
         const comment = new Comment({
             userId: res.get('id'),
             threadId: req.params.id,
@@ -86,9 +86,8 @@ router.post('/:id/comment/:comment', (req, res, next) => {
 
 router.put('/:id/upvote', (req, res, next) => {
     try {
-        assert(req.params.length === 19, 'Invalid id');
-
         Thread.findById(req.params.id).then((thread) => {
+            //TODO: CHECK NULL
             let upVotes = thread.votesOfUsers.upVotes;
             let downVotes = thread.votesOfUsers.downVotes;
 
@@ -96,6 +95,9 @@ router.put('/:id/upvote', (req, res, next) => {
                 upVotes.push(res.get('id'));
                 downVotes.remove(res.get('id'));
             }
+
+            console.log(upVotes);
+            console.log(downVotes);
 
             Thread.findByIdAndUpdate(req.params.id, {
                 votesOfUsers: {
@@ -113,9 +115,8 @@ router.put('/:id/upvote', (req, res, next) => {
 
 router.put('/:id/downvote', (req, res, next) => {
     try {
-        assert(req.params.length === 19, 'Invalid id');
-
         Thread.findById(req.params.id).then((thread) => {
+            //TODO: ADD NULL!
             let upVotes = thread.votesOfUsers.upVotes;
             let downVotes = thread.votesOfUsers.downVotes;
 
@@ -147,7 +148,7 @@ router.get('', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-    Promise.all([Thread.find({_id: req.params.id}), Comment.find({threadId: req.params.id}).populate({
+    Promise.all([Thread.findOne({_id: req.params.id}), Comment.find({threadId: req.params.id}).populate({
         votesOfUsers: {
             upVotes: {
                 path: 'upVotes',

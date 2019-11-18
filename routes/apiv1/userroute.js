@@ -7,7 +7,10 @@ const Thread = require('../../models/thread');
 
 router.get('', (req, res, next) => {
     User.findOne({_id: res.get('id')}, {registerDate: 1, userName: 1}).then((user) => {
-        res.status(200).json(user);
+        res.status(200).json({
+            registerDate: user.registerDate,
+            userName: user.userName
+        });
     }).catch((error) => {
         next(error);
     });
@@ -28,8 +31,6 @@ router.get('/threads', (req, res, next) => {
         next(error);
     });
 });
-
-
 
 router.delete('', (req, res, next) => {
     User.findByIdAndRemove(res.get('id')).then(() => {

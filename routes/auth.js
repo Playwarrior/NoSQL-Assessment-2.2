@@ -22,6 +22,9 @@ router.post('/register', (req, res, next) => {
     try {
         const b = req.body;
 
+        assert(typeof b.userName === 'string', 'Invalid Username');
+        assert(typeof b.password === 'string', 'Invalid Password');
+
         const hash = bcrypt.hashSync(b.password, saltRounds);
 
         const newUser = new User({
@@ -33,7 +36,7 @@ router.post('/register', (req, res, next) => {
             .save()
             .then((message) => {
                 res.status(200).json({description: 'Succesfully logged in!', message: `${message.toString()}`});
-                logger.log(`New user registrated: ${newUser.toString}`);
+                logger.log(`New user registered: ${newUser.toString}`);
             })
             .catch((err) => {
                 logger.error(err);

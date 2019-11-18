@@ -20,7 +20,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-if (process.env.NODE_ENV !== 'test') {
+console.log(process.env.NODE_ENV === 'test');
+
+if (process.env.NODE_ENV === 'test') {
     mongoose.connect(connection, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -33,7 +35,7 @@ mongoose.connection
         console.log('Connection is open!');
         logger.log('Connection is open');
 
-        const port = 8080 || process.env.PORT;
+        const port = 8090 || process.env.PORT;
         app.listen(port, () => {
             console.log(`Server is open on port ${port}!`);
             logger.log(`Server is up and running on port ${port}`);
@@ -57,3 +59,5 @@ function errorHandler(err, req, res, next) {
 }
 
 app.use(errorHandler);
+
+module.exports = app;
