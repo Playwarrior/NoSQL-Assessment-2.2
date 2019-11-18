@@ -23,8 +23,6 @@ router.get('/:id', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
     try {
-        assert(req.params.id.length === 19, 'Invalid id');
-
         Comment.findOneAndUpdate({_id: req.params.id, userId: res.get('id')}, {
             content: req.body.content
         }).then(() => {
@@ -40,8 +38,6 @@ router.put('/:id', (req, res, next) => {
 
 router.put('/:id/upvote', (req, res, next) => {
     try {
-        assert(req.params.length === 19, 'Invalid id');
-
         Comment.findById(req.params.id).then((comment) => {
             let upVotes = comment.votesOfUsers.upVotes;
             let downVotes = comment.votesOfUsers.downVotes;
@@ -67,8 +63,6 @@ router.put('/:id/upvote', (req, res, next) => {
 
 router.put('/:id/downvote', (req, res, next) => {
     try {
-        assert(req.params.length === 19, 'Invalid id');
-
         Comment.findById(req.params.id).then((comment) => {
             let upVotes = comment.votesOfUsers.upVotes;
             let downVotes = comment.votesOfUsers.downVotes;
@@ -94,8 +88,6 @@ router.put('/:id/downvote', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
     try {
-        assert(req.params.id.length === 19, 'Invalid id');
-
         Comment.findOneAndRemove({_id: req.params.id, userId: res.get('id')}).then((comment) => {
             if (comment === null)
                 res.status(401).json('Unauthorized deletion');

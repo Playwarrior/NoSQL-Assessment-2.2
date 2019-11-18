@@ -64,9 +64,7 @@ router.post('/:id/comment', (req, res, next) => {
 
 router.post('/:id/comment/:comment', (req, res, next) => {
     try {
-        assert(req.params.id.length === 19, 'Invalid id');
-        assert(req.params.comment.length === 19, 'Invalid comment Id');
-
+        //TODO: CHECK IF COMMENTS EXISTS!
         const comment = new Comment({
             userId: res.get('id'),
             commentId: req.params.comment,
@@ -96,8 +94,6 @@ router.put('/:id/upvote', (req, res, next) => {
                 downVotes.remove(res.get('id'));
             }
 
-            console.log(upVotes);
-            console.log(downVotes);
 
             Thread.findByIdAndUpdate(req.params.id, {
                 votesOfUsers: {
@@ -149,16 +145,7 @@ router.get('', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
     Promise.all([Thread.findOne({_id: req.params.id}), Comment.find({threadId: req.params.id}).populate({
-        votesOfUsers: {
-            upVotes: {
-                path: 'upVotes',
-                model: 'user'
-            },
-            downVotes: {
-                path: 'downVotes',
-                model: 'user'
-            }
-        }
+        path: 'user'
     })]).then((result) => {
         res.status(200).json({
             thread: result[0],
@@ -171,8 +158,6 @@ router.get('/:id', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
     try {
-        assert(req.params.id.length === 19, 'Invalid id');
-
         Thread.findOneAndUpdate({_id: req.params.id, userId: res.get('id')}, {
             content: req.body.content
         }).then(() => {
@@ -188,8 +173,6 @@ router.put('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
     try {
-        assert(req.params.id.length === 19, 'Invalid id');
-
         Promise.all([Thread.findOneAndRemove({_id: req.params.id, userId: res.get('id')}), Comment.deleteMany({threadId: req.params.id})]).then(() => {
             //TODO: ADD MESSAGE WHEN AUTHORISATION IS NOT VALID!
             res.status(200).json('Thread has been deleted!');

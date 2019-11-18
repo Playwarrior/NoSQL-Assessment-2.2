@@ -124,8 +124,39 @@ describe('Thread route tests', () => {
             .set('token', token)
             .expect(200)
             .end((err, response) => {
-                console.log(response);
+                assert(response.body.thread.title === t.title);
+                assert(response.body.thread.content === t.content);
                 done();
+            });
+    });
+
+    it('Updating a thread with a specific id using /apiv1/threads/:id', (done) => {
+        request(app)
+            .put(`/apiv1/threads/${t._id}`)
+            .set('token', token)
+            .expect(200)
+            .send({
+                content: 'A new thread? Wow!'
+            })
+            .end((err, response) => {
+                Thread.findOne({_id: t._id}).then((thread) => {
+                    assert(thread !== null);
+                    assert(thread.content === 'A new thread? Wow!');
+                    done();
+                });
+            });
+    });
+
+    it('Deleting a thread with a specific id using /apiv1/threads/:id', (done) => {
+        request(app)
+            .delete(`/apiv1/threads/${t._id}`)
+            .set('token', token)
+            .expect(200)
+            .end((err, response) => {
+                Thread.find({_id: t._id}).then((threads) => {
+                    assert(threads.length === 0);
+                    done();
+                })
             });
     });
 });
