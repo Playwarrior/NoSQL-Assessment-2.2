@@ -1,10 +1,142 @@
 const express = require('express');
 const router = express.Router();
 
+const assert = require('assert');
+
 const Thread = require('../../models/thread');
+const Comment = require('../../models/comment');
+
+function getSortCriteria(query) {
+    const sort = {};
+
+    if (query.upvotes) {
+        sort.upVotesCount = 1;
+    }
+
+    if (query.downvotes) {
+        sort.downVotesCount = 1;
+    }
+
+    if (query.comments) {
+        sort.commentCount = 1;
+    }
+
+    return sort;
+}
+
+router.post('', (req, res, next) => {
+    try {
+        const thread = new Thread({
+            userId: res.get('id'),
+            title: req.body.title,
+            content: req.body.content
+        });
+
+        thread.save().then(() => {
+            res.status(200).json('Thread created');
+        }).catch((error) => {
+            next(error);
+        });
+    } catch (ex) {
+        next(ex);
+    }
+});
+
+router.post('/:id/comment', (req, res, next) => {
+    //TODO: CHECK IF THREAD EXISTS
+
+    try {
+        const comment = new Comment({
+            userId: res.get('id'),
+            threadId: req.params.id,
+            content: req.body.content
+        });
+
+        comment.save().then(() => {
+            res.status(200).json('Comment created!');
+        }).catch((error) => {
+            next(error);
+        });
+    } catch (ex) {
+        next(ex);
+    }
+});
+
+router.post('/:id/comment/:comment', (req, res, next) => {
+    try {
+        //TODO: CHECK IF COMMENTS EXISTS!
+        const comment = new Comment({
+            userId: res.get('id'),
+            commentId: req.params.comment,
+            threadId: req.params.id,
+            content: req.body.content
+        });
+
+        comment.save().then(() => {
+            res.status(200).json('Comment created!');
+        }).catch((error) => {
+            next(error);
+        });
+    } catch (ex) {
+        next(ex);
+    }
+});
+
+router.put('/:id/upvote', (req, res, next) => {
+    try {
+        Thread.findById(req.params.id).then((thread) => {
+            //TODO: CHECK NULL
+            let upVotes = thread.votesOfUsers.upVotes;
+            let downVotes = thread.votesOfUsers.downVotes;
+
+            if (!upVotes.includes(res.get('id'))) {
+                upVotes.push(res.get('id'));
+                downVotes.remove(res.get('id'));
+            }
+
+
+            Thread.findByIdAndUpdate(req.params.id, {
+                votesOfUsers: {
+                    upVotes: upVotes,
+                    downVotes: downVotes
+                }
+            }).then(() => {
+                res.status(200).json('Upvoted thread!');
+            });
+        });
+    } catch (ex) {
+        next(ex);
+    }
+});
+
+router.put('/:id/downvote', (req, res, next) => {
+    try {
+        Thread.findById(req.params.id).then((thread) => {
+            //TODO: ADD NULL!
+            let upVotes = thread.votesOfUsers.upVotes;
+            let downVotes = thread.votesOfUsers.downVotes;
+
+            if (!downVotes.includes(res.get('id'))) {
+                upVotes.remove(res.get('id'));
+                downVotes.push(res.get('id'));
+            }
+
+            Thread.findByIdAndUpdate(req.params.id, {
+                votesOfUsers: {
+                    upVotes: upVotes,
+                    downVotes: downVotes
+                }
+            }).then(() => {
+                res.status(200).json('Downvoted thread!');
+            });
+        });
+    } catch (ex) {
+        next(ex);
+    }
+});
 
 router.get('', (req, res, next) => {
-    Thread.find().then((threads) => {
+    Thread.find().sort(getSortCriteria(req.query)).then((threads) => {
         res.status(200).json(threads);
     }).catch((error) => {
         next(error);
@@ -12,21 +144,44 @@ router.get('', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-    Thread.find({_id: req.params.id}).then((thread) => {
-        res.status(200).json(thread);
+    Promise.all([Thread.findOne({_id: req.params.id}), Comment.find({threadId: req.params.id}).populate({
+        path: 'user'
+    })]).then((result) => {
+        res.status(200).json({
+            thread: result[0],
+            comments: result[1]
+        });
     }).catch((error) => {
         next(error);
     });
 });
 
-router.get('/:id/comments', (req, res, next) => {
-   Comment.find({threadId: req.params.id}).then((comments) => {
-       res.status(200).json(comments);
-   }).catch((error) => {
-       next(error);
-   });
+router.put('/:id', (req, res, next) => {
+    try {
+        Thread.findOneAndUpdate({_id: req.params.id, userId: res.get('id')}, {
+            content: req.body.content
+        }).then(() => {
+            //TODO: ADD MESSAGE WHEN AUTHORISATION IS NOT VALID!
+            res.status(200).json('Thread is updated!');
+        }).catch((error) => {
+            next(error);
+        });
+    } catch (ex) {
+        next(ex);
+    }
 });
 
-
+router.delete('/:id', (req, res, next) => {
+    try {
+        Promise.all([Thread.findOneAndRemove({_id: req.params.id, userId: res.get('id')}), Comment.deleteMany({threadId: req.params.id})]).then(() => {
+            //TODO: ADD MESSAGE WHEN AUTHORISATION IS NOT VALID!
+            res.status(200).json('Thread has been deleted!');
+        }).catch((error) => {
+            next(error);
+        });
+    } catch (ex) {
+        next(ex);
+    }
+});
 
 module.exports = router;
