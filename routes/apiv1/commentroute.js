@@ -1,9 +1,35 @@
 const express = require('express');
 const router = express.Router();
 
-const assert = require('assert');
+const mongoose = require('mongoose');
 
+const NullSector = require('../../util/nullsector');
 const Comment = require('../../models/comment');
+
+router.post('/:id', (req, res, next) => {
+    NullSector.hasComment({_id: req.params.id}, (error, bool, c) => {
+        if (error)
+            next(error);
+
+        else if (!bool)
+            next(new Error('No comment found with the Id: ' + req.params.comment));
+
+        else {
+            const comment = new Comment({
+                userId: res.get('id'),
+                commentId: c._id,
+                threadId: c.threadId,
+                content: req.body.content
+            });
+
+            comment.save().then(() => {
+                res.status(200).json('Comment created!');
+            }).catch((error) => {
+                next(error);
+            });
+        }
+    });
+});
 
 router.get('', (req, res, next) => {
     Comment.find({}).then((comments) => {
@@ -14,31 +40,45 @@ router.get('', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-    Comment.findOne({_id: req.params.id}).then((comment) => {
-        res.status(200).json(comment);
-    }).catch((error) => {
-        next(error);
+    NullSector.hasComment({_id: req.params.id}, (error, bool, comment) => {
+        if (error)
+            next(error);
+
+        else if (!bool)
+            next(new Error('No comment found with the Id: ' + req.params.id));
+
+        else
+            res.status(200).json(comment);
     });
 });
 
 router.put('/:id', (req, res, next) => {
-    try {
-        Comment.findOneAndUpdate({_id: req.params.id, userId: res.get('id')}, {
-            content: req.body.content
-        }).then(() => {
-            //TODO: ADD MESSAGE IF COMMENT HAS NOT BEEN UPDATED!
-            res.status(200).json('Comment has been updated!');
-        }).catch((error) => {
+    NullSector.hasComment({_id: req.params.id, userId: res.get('id')}, (error, bool, comment) => {
+        if (error)
             next(error);
-        });
-    } catch (ex) {
-        next(ex);
-    }
+
+        else if (!bool)
+            next(new Error('No comment found with the Id: ' + req.params.id));
+
+        else {
+            comment.update({content: req.body.content}).then(() => {
+                res.status(200).json('Comment updated!');
+            }).catch((error) => {
+                next(error);
+            });
+        }
+    });
 });
 
 router.put('/:id/upvote', (req, res, next) => {
-    try {
-        Comment.findById(req.params.id).then((comment) => {
+    NullSector.hasComment({_id: req.params.id}, (error, bool, comment) => {
+        if (error)
+            next(error);
+
+        else if (!bool)
+            next(new Error('No comment found with the Id: ' + req.params.id));
+
+        else {
             let upVotes = comment.votesOfUsers.upVotes;
             let downVotes = comment.votesOfUsers.downVotes;
 
@@ -47,23 +87,29 @@ router.put('/:id/upvote', (req, res, next) => {
                 downVotes.remove(res.get('id'));
             }
 
-            Comment.findByIdAndUpdate(req.params.id, {
+            comment.update({
                 votesOfUsers: {
                     upVotes: upVotes,
                     downVotes: downVotes
                 }
             }).then(() => {
                 res.status(200).json('Upvoted comment!');
+            }).catch((error) => {
+                next(error);
             });
-        });
-    } catch (ex) {
-        next(ex);
-    }
+        }
+    });
 });
 
 router.put('/:id/downvote', (req, res, next) => {
-    try {
-        Comment.findById(req.params.id).then((comment) => {
+    NullSector.hasComment({_id: req.params.id}, (error, bool, comment) => {
+        if (error)
+            next(error);
+
+        else if (!bool)
+            next(new Error('No comment found with the Id: ' + req.params.id));
+
+        else {
             let upVotes = comment.votesOfUsers.upVotes;
             let downVotes = comment.votesOfUsers.downVotes;
 
@@ -72,34 +118,36 @@ router.put('/:id/downvote', (req, res, next) => {
                 downVotes.push(res.get('id'));
             }
 
-            Comment.findByIdAndUpdate(req.params.id, {
+            comment.update({
                 votesOfUsers: {
                     upVotes: upVotes,
                     downVotes: downVotes
                 }
             }).then(() => {
-                res.status(200).json('Upvoted thread!');
+                res.status(200).json('Downvoted comment!');
+            }).catch((error) => {
+                next(error);
             });
-        });
-    } catch (ex) {
-        next(ex);
-    }
+        }
+    });
 });
 
 router.delete('/:id', (req, res, next) => {
-    try {
-        Comment.findOneAndRemove({_id: req.params.id, userId: res.get('id')}).then((comment) => {
-            if (comment === null)
-                res.status(401).json('Unauthorized deletion');
-
-            else
-                res.status(204).json('Comment deleted!');
-        }).catch((error) => {
+    NullSector.hasComment({_id: req.params.id, userId: res.get('id')}, (error, bool, comment) => {
+        if (error)
             next(error);
-        });
-    } catch (ex) {
-        next(ex);
-    }
+
+        else if (!bool)
+            next(new Error('No comment found with Id: ' + req.params.id));
+
+        else {
+            comment.remove().then(() => {
+                res.status(200).json('Comment deleted!');
+            }).catch((error) => {
+                next(error);
+            })
+        }
+    });
 });
 
 module.exports = router;
