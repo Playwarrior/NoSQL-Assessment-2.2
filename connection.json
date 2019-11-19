@@ -4,6 +4,7 @@
 	"neo4j": {
 		"connectionString": "bolt://hobby-bmhcicbddikmgbkefilkgddl.dbs.graphenedb.com:24787",
 		"username": "studdit-prod",
-		"password": "b.5p1qkm2MB26V.0Jr1mXA2a1dlrQgZ"
+		"password": "b.5p1qkm2MB26V.0Jr1mXA2a1dlrQgZ",
+		"encrypted": true
 	}
 }
