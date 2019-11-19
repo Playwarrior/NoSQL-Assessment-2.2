@@ -10,19 +10,18 @@ const threadRoute = require('./apiv1/threadroute');
 const friendshipRoute = require('./apiv1/friendshipRoute');
 
 router.all('*', (req, res, next) => {
+	assert(typeof req.headers['token'] === 'string', 'No valid token!');
 
-    assert(typeof req.headers["token"] == "string", "No valid token!");
+	const token = req.header('token') || '';
 
-    const token = req.header("token") || "";
-
-    jwt.decodeToken(token, (error, payload) => {
-        if (error) {
-            res.status(401).json(error);
-        } else {
-            res.set('id', payload.sub);
-            next();
-        }
-    });
+	jwt.decodeToken(token, (error, payload) => {
+		if (error) {
+			res.status(401).json({ message: 'Not authorized / authenticated!', error: error });
+		} else {
+			res.set('id', payload.sub);
+			next();
+		}
+	});
 });
 
 router.use('/threads', threadRoute);
