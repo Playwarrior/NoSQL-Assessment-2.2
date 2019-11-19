@@ -6,5 +6,6 @@
 		"username": "studdit-prod",
 		"password": "b.5p1qkm2MB26V.0Jr1mXA2a1dlrQgZ",
 		"encrypted": true
-	}
+	},
+	"testing": false
 }
