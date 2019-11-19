@@ -23,7 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect(connection, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
-	useFindAndModify: false
+	useFindAndModify: false,
+	useCreateIndex: true
 });
 
 mongoose.connection
