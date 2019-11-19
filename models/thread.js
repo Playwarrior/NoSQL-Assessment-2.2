@@ -13,7 +13,7 @@ const ThreadSchema = new Schema(
 				validator: function(v) {
 					return /^.{1,100}$/.test(v);
 				},
-				msg: 'is empty or exceeds 100 characters!'
+				msg: 'Title is empty or exceeds 100 characters!'
 			},
 			required: [ true, 'Title is required (max. characters: 100)' ]
 		},
@@ -23,7 +23,7 @@ const ThreadSchema = new Schema(
 				validator: function(v) {
 					return /^.+$/.test(v);
 				},
-				msg: 'Content is not valid or is empty!'
+				msg: 'Content/Description is not valid or is empty!'
 			},
 			required: [ true, 'Content/Description is required' ]
 		},
@@ -57,6 +57,19 @@ ThreadSchema.virtual('upVotesCount').get(function() {
 // Virtual field of downVotes count
 ThreadSchema.virtual('downVotesCount').get(function() {
 	return this.votesOfUsers.downVotes.length;
+});
+
+ThreadSchema.virtual('commentCount').get(function() {
+	const Comment = mongoose.model('comment');
+
+	Comment.find({ threadId: this._id })
+		.count()
+		.then((count) => {
+			return count;
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 });
 
 const Thread = mongoose.model('thread', ThreadSchema);

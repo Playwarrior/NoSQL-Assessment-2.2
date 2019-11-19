@@ -4,7 +4,7 @@
 	"description": "23INVT2B - Robin Egberts (2136993) &amp; Bryan Kho (2136024) - NoSQL",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "set NODE_ENV=test & nodemon --exec mocha --recursive -R min --timeout 10000",
 		"start": "nodemon app.js"
 	},
 	"repository": {
@@ -26,6 +26,7 @@
 		"mongoose": "^5.7.9",
 		"neo4j-driver": "^1.7.6",
 		"nodemon": "^1.19.4",
+		"supertest": "^4.0.2",
 		"tracer": "^1.0.1"
 	}
 }
