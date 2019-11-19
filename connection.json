@@ -1,5 +1,5 @@
 {
 	"connectionString": "mongodb+srv://studdit-management-01:Indigo4707@cluster0-brmkk.mongodb.net/studdit?retryWrites=true&w=majority",
 	"secretKey": "MyServerSuperSecretKey-123454321AbCd-",
-	"testing": true
+	"testing": false
 }
