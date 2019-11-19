@@ -13,35 +13,6 @@ const logger = require('tracer').dailyfile({
 
 const session = require('../../helpers/neo4jUtils');
 
-/**
- * TODO: add post User for neo4j DB to actual userroute
- * TODO: add delete User for neo4j DB to actual userroute
- */
-
-// POST: add User to neo4j DB
-router.post('/users', (req, res, next) => {
-	try {
-		const userName = req.body.userName;
-
-		assert(typeof userName === 'string', 'userName is not a string!');
-
-		session
-			.run(`CREATE (a:User {username: "${userName}"}) return a`)
-			.then((result) => {
-				const r = result.records[0]._fields[0].properties.username;
-				session.close();
-
-				res.status(200).json({ message: `User ${userName} succesfully created`, username: r });
-			})
-			.catch((error) => {
-				res.status(500).json({ message: 'Could not create user!', error: error });
-			});
-	} catch (ex) {
-		res.status(500).json({ message: `An exception has occurred!`, exception: ex });
-	}
-	session.close();
-});
-
 // POST: create friendship between two Users
 router.post('/', (req, res, next) => {
 	try {
@@ -104,22 +75,24 @@ router.get('/check', (req, res, next) => {
 // GET: show all friendship relation of user and/or his/her friends friendship relations
 router.get('/', (req, res, next) => {
 	try {
-		const userName = req.body.userName;
-		const getLength = req.body.length < 1 ? 1 : req.body.length;
+		assert(typeof req.body.length === 'number', 'length is not a number!');
 
-		assert(typeof userName === 'string', 'userName is not a string!');
-		assert(typeof getLength === 'number', 'length is not a number!');
+		const userId = res.get('id');
+		const getLength = req.body.length;
+
+		if (req.body.length < 1) {
+			getLength = 1;
+		}
 
 		session
-			.run(
-				`MATCH (a:User {username: "${userName}"})-[r*1..${getLength}]-(b) return collect(DISTINCT b.username);`
-			)
+			.run(`MATCH (a:User {userId: "${userId}"})-[r*1..${getLength}]-(b) return collect(DISTINCT b.username);`)
 			.then((result) => {
 				const values = result.records[0]._fields[0];
 
-				res.status(200).json({ message: `User ${userName} relationships`, result: values });
+				res.status(200).json({ message: `User with userId ${userId} relationships`, result: values });
 			})
 			.catch((error) => {
+				console.log(error);
 				res.status(500).json({ message: `Unable to find any friendship relation`, error: error });
 			});
 	} catch (ex) {
