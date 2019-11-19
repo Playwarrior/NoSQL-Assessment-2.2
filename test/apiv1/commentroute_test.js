@@ -125,9 +125,9 @@ describe('Thread route tests', () => {
             });
     });
 
-    it('Creation of a comment on a comment using /apiv1/threads/:id/comment/:comment', (done) => {
+    it('Creation of a comment on a comment using /apiv1/comments/:comment', (done) => {
         request(app)
-            .post(`/apiv1/threads/${t._id}/comment/${c._id}`)
+            .post(`/apiv1/comments/${c._id}`)
             .set('token', token)
             .expect(200)
             .send({

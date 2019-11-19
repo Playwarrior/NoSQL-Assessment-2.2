@@ -86,7 +86,7 @@ router.put('/register', (req, res, next) => {
     try {
         const body = req.body;
 
-        User.findOne({userName: body.username}).then((user) => {
+        User.findOne({userName: body.userName}).then((user) => {
             if (bcrypt.compareSync(body.password, user.password)) {
                 User.findByIdAndUpdate(user._id, {
                     password: bcrypt.hashSync(body.newPassword, saltRounds)
