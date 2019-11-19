@@ -13,139 +13,140 @@ const connection = require('../connection.json');
 // NEO4J CLOUD DB CONNECTION
 const driver = neo4j.driver(
 	connection.neo4j.connectionString,
-	neo4j.auth.basic(connection.neo4j.username, connection.neo4j.password)
+	neo4j.auth.basic(connection.neo4j.username, connection.neo4j.password),
+	{ encrypted: connection.neo4j.encrypted }
 );
 
+const session = driver.session();
+
+console.log(session);
+
 // Create a User in Neo4j DB
-export function CreateUser(userName) {
-	session
-		.run(`CREATE (a:User {username: $username}) return a`, { username: userName })
-		.then((result) => {
-			console.log(result);
-			if (result.records[0].get('username') === userName) {
-				logger.log(`User ${userName} succesfully created in Neo4j database.`);
-				return true;
-			}
-		})
-		.catch((error) => {
-			console.log(error);
-			// return error;
-			return false;
-		});
+// CONSTAINT created in DB to prevent duplicates.
+// exports.CreateUser = async function(userName) {
+// 	session
+// 		.run(`CREATE (a:User {username: "${userName}"}) return a`)
+// 		.then((result) => {
+// 			console.log(result);
+// 			session.close();
+// 			return result;
+// 		})
+// 		.catch((error) => {
+// 			console.log(error);
+// 			// return error;
+// 			session.close();
+// 			return new Error(error);
+// 		});
+// };
 
-	session.close();
-}
+// // Delete a User and his friendships in Neo4j DB
+// exports.DeleteUser = function(userName) {
+// 	session
+// 		.run(`MATCH (u:User {username: "${userName}"})-[r:FRIENDED]-(:User) DELETE r, u;`) // Delete all friendships and then User
+// 		.then(() => {
+// 			return true;
+// 		})
+// 		.catch((error) => {
+// 			console.log(error);
+// 			// return error;
+// 			return false;
+// 		});
+// 	session.close();
+// };
 
-// Delete a User and his friendships in Neo4j DB
-export function DeleteUser(userName) {
-	session
-		.run(`MATCH (u:User {username: "Henk"})-[r:FRIENDED]-(:User) DELETE r, u;`, { username: userName }) // Delete all friendships and then user
-		.then(() => {
-			return true;
-		})
-		.catch((error) => {
-			console.log(error);
-			// return error;
-			return false;
-		});
-	session.close();
-}
+// // Create a friendship relation between two Users in Neo4j DB
+// exports.CreateFriends = function(firstUserName, secondUserName) {
+// 	session
+// 		.run(
+// 			`MATCH (a:User {username: "${usernameFirst}"}), (b:User {username: "${usernameSecond}"}) MERGE (a)-[:FRIENDED]->(b) RETURN a.username, b.username;`
+// 		)
+// 		.then((result) => {
+// 			console.log(result);
+// 			if (result.records[0].get(0)) {
+// 				logger.log(
+// 					`Friend relation between user ${firstUserName} and user ${secondUserName} created in Neo4j database.`
+// 				);
+// 				return true;
+// 			}
+// 		})
+// 		.catch((error) => {
+// 			console.log(error);
+// 			// return error;
+// 			return false;
+// 		});
+// 	session.close();
+// };
 
-// Create a friendship relation between two Users in Neo4j DB
-export function CreateFriends(firstUserName, secondUserName) {
-	session
-		.run(
-			`MATCH (a:User), (b:User) WHERE a.username = $usernameA AND b.username = $usernameB CREATE (a)-[FRIENDED]->(b) return true;`,
-			{ usernameA: firstUserName, usernameB: secondUserName }
-		)
-		.then((result) => {
-			console.log(result);
-			if (result.records[0].get(0)) {
-				logger.log(
-					`Friend relation between user ${firstUserName} and user ${secondUserName} created in Neo4j database.`
-				);
-				return true;
-			}
-		})
-		.catch((error) => {
-			console.log(error);
-			// return error;
-			return false;
-		});
-	session.close();
-}
+// // Get all friendship relations of a User in Neo4j DB
+// exports.GetAllFriendshipsFromUser = function(userName, lengthOfRelations) {
+// 	// Check if length is greater than 1
+// 	const getLength = lengthOfRelations == null ? 0 : lengthOfRelations;
 
-// Get all friendship relations of a User in Neo4j DB
-export function GetAllConnectionFriendshipsFromUser(userName, lengthOfRelations) {
-	// Check if length is greater than 1
-	const getLength = lengthOfRelations < 1 ? 1 : lengthOfRelations;
+// 	getLength = lengthOfRelations < 1 ? 1 : lengthOfRelations;
 
-	session
-		.run(`MATCH (a:User {username: $username})-[r*1..$length]-(b) return b;`, {
-			username: userName,
-			length: getLength
-		})
-		.then((result) => {
-			console.log(result);
-			return result;
-		})
-		.catch((error) => {
-			console.log(error);
-			return error;
-		});
-	session.close();
-}
+// 	session
+// 		.run(`MATCH (a:User {username: ${userName}})-[r*1..${getLength}]-(b) return b;`)
+// 		.then((result) => {
+// 			console.log(result);
+// 			return result;
+// 		})
+// 		.catch((error) => {
+// 			console.log(error);
+// 			return error;
+// 		});
+// 	session.close();
+// };
 
-// Check if a friendship relation between two Users exists in Neo4j DB
-export function CheckIfFriendshipExists(firstUserName, secondUserName) {
-	session
-		.run(
-			`MATCH (a:User), (b:User) WHERE a.username = $usernameA AND b.username = $usernameB RETURN EXISTS( (a)-[:FRIENDED]-(b));`,
-			{ usernameA: firstUserName, usernameB: secondUserName }
-		)
-		.then((result) => {
-			if (result.records[0].get(0)) {
-				return true;
-			}
-		})
-		.catch((error) => {
-			console.log(error);
-			// return error;
-			return false;
-		});
+// // Check if a friendship relation between two Users exists in Neo4j DB
+// exports.CheckIfFriendshipExists = function(firstUserName, secondUserName) {
+// 	session
+// 		.run(
+// 			`MATCH (a:User), (b:User) WHERE a.username = "${firstUserName}" AND b.username = "${secondUserName}" RETURN EXISTS( (a)-[:FRIENDED]-(b));`,
+// 			console.log(session)
+// 		)
+// 		.then((result) => {
+// 			console.log(result);
+// 			if (result.records[0].get(0)) {
+// 				return true;
+// 			}
+// 		})
+// 		.catch((error) => {
+// 			console.log(error);
+// 			// return error;
+// 			return false;
+// 		});
 
-	session.close();
-}
+// 	session.close();
+// };
 
-// Remove friendship relation between two Users in Neo4j DB
-export function RemoveFriendship(firstUserName, secondUserName) {
-	session
-		.run(`MATCH (:User {username: $usernameA})-[r:FRIENDED]-(:User {username: $usernameB}) DELETE r return true;`, {
-			usernameA: firstUserName,
-			usernameB: secondUserName
-		})
-		.then(() => {
-			return true;
-		})
-		.catch((error) => {
-			console.log(error);
-			// return error;
-			return false;
-		});
-	session.close();
-}
+// exports.RemoveFriendship = function(firstUserName, secondUserName) {
+// 	session
+// 		.run(
+// 			`MATCH (a:User {username: "${firstUserName}"})-[r:FRIENDED]-(:User {username: "${secondUserName}"}) DELETE r RETURN a;`
+// 		)
+// 		.then((result) => {
+// 			return result.records;
+// 		})
+// 		.catch((error) => {
+// 			console.log(error);
+// 			// return error;
+// 			return false;
+// 		});
+// 	session.close();
+// };
 
-// Remove all friendship relations of a User in Neo4j DB
-export function RemoveAllFriendships(userName) {
-	session
-		.run(`MATCH (:User {username: $username})-[r:FRIENDED]-(:User) DELETE r;`, { username: userName })
-		.then(() => {
-			return true;
-		})
-		.catch((error) => {
-			console.log(error);
-			// return error;
-			return false;
-		});
-	session.close();
-}
+// exports.RemoveAllFriendships = function(userName) {
+// 	session
+// 		.run(`MATCH (a:User {username: "${userName}")-[r:FRIENDED]-(:User) DELETE r RETURN a;`)
+// 		.then((result) => {
+// 			return result.records;
+// 		})
+// 		.catch((error) => {
+// 			console.log(error);
+// 			// return error;
+// 			return false;
+// 		});
+// 	session.close();
+// };
+
+module.exports = session;
