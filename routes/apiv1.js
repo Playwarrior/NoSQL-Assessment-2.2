@@ -9,6 +9,6 @@ const friendshipRoute = require('./apiv1/friendshipRoute');
 router.use('/threads', threadRoute);
 router.use('/users', userRoute);
 router.use('/comments', commentRoute);
-router.use('/friendship', friendshipRoute);
+router.use('/friendships', friendshipRoute);
 
 module.exports = router;
