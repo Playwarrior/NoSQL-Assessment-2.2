@@ -20,9 +20,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-console.log(process.env.NODE_ENV === 'test');
-
-if (process.env.NODE_ENV === 'test') {
+if (!connection.testing) {
 	mongoose.connect(connection, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
@@ -56,7 +54,8 @@ app.use('/apiv1', apiv1);
 app.use('/auth', auth);
 
 function errorHandler(err, req, res, next) {
-	res.status(500).json(err);
+	console.log(err);
+	res.status(500).json({ error: err });
 }
 
 app.use(errorHandler);
