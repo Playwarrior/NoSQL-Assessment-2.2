@@ -11,9 +11,11 @@ const User = require('../../models/user');
 const Comment = require('../../models/comment');
 const Thread = require('../../models/thread');
 
-router.get('/', (req, res, next) => {
+router.get('', (req, res, next) => {
 	User.findOne({ _id: res.get('id') }, { registerDate: 1, userName: 1 })
 		.then((user) => {
+			console.log(user);
+
 			res.status(200).json({
 				registerDate: user.registerDate,
 				userName: user.userName

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const app = require("../app");
 
 before((done) => {
     mongoose.connect('mongodb://localhost/studdit_test');

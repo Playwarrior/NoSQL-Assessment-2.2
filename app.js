@@ -13,7 +13,7 @@ const apiv1 = require('./routes/apiv1');
 
 const auth = require('./routes/auth');
 
-const connection = require('./connection').connectionString;
+const connection = require('./connection');
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 if (!connection.testing) {
-	mongoose.connect(connection, {
+	mongoose.connect(connection.connectionString, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useFindAndModify: false,
@@ -34,7 +34,7 @@ mongoose.connection
 		console.log('Connection is open!');
 		logger.log('Connection is open');
 
-		const port = 8090 || process.env.PORT;
+		const port = 8080 || process.env.PORT;
 		app.listen(port, () => {
 			console.log(`Server is open on port ${port}!`);
 			logger.log(`Server is up and running on port ${port}`);
@@ -54,8 +54,9 @@ app.use('/apiv1', apiv1);
 app.use('/auth', auth);
 
 function errorHandler(err, req, res, next) {
-	console.log(err);
-	res.status(500).json({ error: err });
+	res.status(500).json({ error: err.message });
+	console.error(err);
+	logger.error(err);
 }
 
 app.use(errorHandler);

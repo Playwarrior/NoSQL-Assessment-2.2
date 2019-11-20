@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const assert = require('assert');
+const NullSector = require('../../util/nullsector');
 
 // Neo4j helper
 const session = require('../../helpers/neo4jUtils');
@@ -53,55 +53,33 @@ router.post('', (req, res, next) => {
 });
 
 router.post('/:id/comment', (req, res, next) => {
-	//TODO: CHECK IF THREAD EXISTS
-
-	try {
-		const comment = new Comment({
-			userId: res.get('id'),
-			threadId: req.params.id,
-			content: req.body.content
-		});
-
-		comment
-			.save()
-			.then(() => {
-				res.status(200).json('Comment created!');
-			})
-			.catch((error) => {
-				next(error);
+	NullSector.hasThread({ _id: req.params.id }, (error, bool, thread) => {
+		if (error) next(error);
+		else if (!bool) next(new Error('No thread with the Id: ' + req.params.id));
+		else {
+			const comment = new Comment({
+				userId: res.get('id'),
+				threadId: req.params.id,
+				content: req.body.content
 			});
-	} catch (ex) {
-		next(ex);
-	}
-});
 
-router.post('/:id/comment/:comment', (req, res, next) => {
-	try {
-		//TODO: CHECK IF COMMENTS EXISTS!
-		const comment = new Comment({
-			userId: res.get('id'),
-			commentId: req.params.comment,
-			threadId: req.params.id,
-			content: req.body.content
-		});
-
-		comment
-			.save()
-			.then(() => {
-				res.status(200).json('Comment created!');
-			})
-			.catch((error) => {
-				next(error);
-			});
-	} catch (ex) {
-		next(ex);
-	}
+			comment
+				.save()
+				.then(() => {
+					res.status(200).json('Comment created!');
+				})
+				.catch((error) => {
+					next(error);
+				});
+		}
+	});
 });
 
 router.put('/:id/upvote', (req, res, next) => {
-	try {
-		Thread.findById(req.params.id).then((thread) => {
-			//TODO: CHECK NULL
+	NullSector.hasThread({ _id: req.params.id }, (error, bool, thread) => {
+		if (error) next(error);
+		else if (!bool) next(new Error('No thread with Id: ' + req.params.id));
+		else {
 			let upVotes = thread.votesOfUsers.upVotes;
 			let downVotes = thread.votesOfUsers.downVotes;
 
@@ -110,44 +88,51 @@ router.put('/:id/upvote', (req, res, next) => {
 				downVotes.remove(res.get('id'));
 			}
 
-			Thread.findByIdAndUpdate(req.params.id, {
-				votesOfUsers: {
-					upVotes: upVotes,
-					downVotes: downVotes
-				}
-			}).then(() => {
-				res.status(200).json('Upvoted thread!');
-			});
-		});
-	} catch (ex) {
-		next(ex);
-	}
+			thread
+				.update({
+					votesOfUsers: {
+						upVotes: upVotes,
+						downVotes: downVotes
+					}
+				})
+				.then(() => {
+					res.status(200).json('Upvoted thread!');
+				})
+				.catch((error) => {
+					next(error);
+				});
+		}
+	});
 });
 
 router.put('/:id/downvote', (req, res, next) => {
-	try {
-		Thread.findById(req.params.id).then((thread) => {
-			//TODO: ADD NULL!
+	NullSector.hasThread({ _id: req.params.id }, (error, bool, thread) => {
+		if (error) next(error);
+		else if (!bool) next(new Error('No thread with Id: ' + req.params.id));
+		else {
 			let upVotes = thread.votesOfUsers.upVotes;
 			let downVotes = thread.votesOfUsers.downVotes;
 
-			if (!downVotes.includes(res.get('id'))) {
+			if (!upVotes.includes(res.get('id'))) {
 				upVotes.remove(res.get('id'));
 				downVotes.push(res.get('id'));
 			}
 
-			Thread.findByIdAndUpdate(req.params.id, {
-				votesOfUsers: {
-					upVotes: upVotes,
-					downVotes: downVotes
-				}
-			}).then(() => {
-				res.status(200).json('Downvoted thread!');
-			});
-		});
-	} catch (ex) {
-		next(ex);
-	}
+			thread
+				.update({
+					votesOfUsers: {
+						upVotes: upVotes,
+						downVotes: downVotes
+					}
+				})
+				.then(() => {
+					res.status(200).json('Downvoted thread!');
+				})
+				.catch((error) => {
+					next(error);
+				});
+		}
+	});
 });
 
 router.get('', (req, res, next) => {
@@ -224,41 +209,38 @@ router.get('/updates/friends', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
-	try {
-		Thread.findOneAndUpdate(
-			{ _id: req.params.id, userId: res.get('id') },
-			{
-				content: req.body.content
-			}
-		)
-			.then(() => {
-				//TODO: ADD MESSAGE WHEN AUTHORISATION IS NOT VALID!
-				res.status(200).json('Thread is updated!');
-			})
-			.catch((error) => {
-				next(error);
-			});
-	} catch (ex) {
-		next(ex);
-	}
+	NullSector.hasThread({ _id: req.params.id }, (error, bool, thread) => {
+		if (error) next(error);
+		else if (!bool) next(new Error('No thread with Id: ' + req.params.id));
+		else {
+			thread
+				.update({
+					content: req.body.content
+				})
+				.then(() => {
+					res.status(200).json('Thread is updated!');
+				})
+				.catch((error) => {
+					next(error);
+				});
+		}
+	});
 });
 
 router.delete('/:id', (req, res, next) => {
-	try {
-		Promise.all([
-			Thread.findOneAndRemove({ _id: req.params.id, userId: res.get('id') }),
-			Comment.deleteMany({ threadId: req.params.id })
-		])
-			.then(() => {
-				//TODO: ADD MESSAGE WHEN AUTHORISATION IS NOT VALID!
-				res.status(200).json('Thread has been deleted!');
-			})
-			.catch((error) => {
-				next(error);
-			});
-	} catch (ex) {
-		next(ex);
-	}
+	NullSector.hasThread({ _id: req.params.id, userId: res.get('id') }, (error, bool, thread) => {
+		if (error) next(error);
+		else if (!bool) next(new Error('No thread found with Id: ' + req.params.id));
+		else {
+			Promise.all([ thread.remove(), Comment.deleteMany({ threadId: req.params.id }) ])
+				.then(() => {
+					res.status(200).json('Thread has been deleted!');
+				})
+				.catch((error) => {
+					next(error);
+				});
+		}
+	});
 });
 
 module.exports = router;
