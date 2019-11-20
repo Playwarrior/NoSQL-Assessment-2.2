@@ -170,7 +170,7 @@ router.get('/updates/friends', (req, res, next) => {
 	assert(typeof req.body.length === 'number', 'length is not a valid number!');
 
 	const userId = res.get('id');
-	const getLength = req.body.length;
+	let getLength = req.body.length;
 
 	if (req.body.length < 1) {
 		getLength = 1;
@@ -182,7 +182,7 @@ router.get('/updates/friends', (req, res, next) => {
 			.then((result) => {
 				const values = result.records[0]._fields[0];
 
-				const valuesArray = [];
+				let valuesArray = [];
 
 				for (i = 0; i < values.length; i++) {
 					valuesArray.push(ObjectId(values[i]));
