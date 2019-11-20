@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const NullSector = require('../../util/nullsector');
+const assert = require('assert');
 
 // Neo4j helper
 const session = require('../../helpers/neo4jUtils');
