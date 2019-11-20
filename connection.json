@@ -1,5 +1,16 @@
 {
 	"connectionString": "mongodb+srv://studdit-management-01:Indigo4707@cluster0-brmkk.mongodb.net/studdit?retryWrites=true&w=majority",
 	"secretKey": "MyServerSuperSecretKey-123454321AbCd-",
+	"neo4j": {
+		"connectionString": "bolt://hobby-bmhcicbddikmgbkefilkgddl.dbs.graphenedb.com:24787",
+		"username": "studdit-prod",
+		"password": "b.5p1qkm2MB26V.0Jr1mXA2a1dlrQgZ"
+	},
+	"neo4jTest": {
+		"connectionString": "bolt://hobby-llbnlebfkikggbkendifkddl.dbs.graphenedb.com:24787",
+		"username": "test",
+		"password": "b.hkrXh8MrZsZE.f8sxVc4oMAaCsuNE"
+	},
+	"encrypedConnection": true,
 	"testing": false
 }

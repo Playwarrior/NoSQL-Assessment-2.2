@@ -9,10 +9,10 @@ const UserSchema = new Schema(
 				validator: function(v) {
 					return /^[a-zA-Z0-9_-]{3,20}$/.test(v);
 				},
-				message: (props) => `${props.value} is not a valid userName!`
+				msg: `UserName is not valid! (Can only contain lower- and uppercase letters and numbers. Min characters: 3, max characters: 20).`
 			},
 			required: [ true, 'userName is required (min. 3 tokens, max. 20 tokens)' ],
-			unique: true
+			unique: [ true, 'Sorry, username is already in use!' ]
 		},
 		password: {
 			type: String,
