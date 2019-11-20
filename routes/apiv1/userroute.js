@@ -12,10 +12,8 @@ const Comment = require('../../models/comment');
 const Thread = require('../../models/thread');
 
 router.get('', (req, res, next) => {
-	User.findOne({ _id: res.get('id') }, { registerDate: 1, userName: 1 })
+	User.findOne({ _id: res.get('id') }, { password: 0 })
 		.then((user) => {
-			console.log(user);
-
 			res.status(200).json({
 				registerDate: user.registerDate,
 				userName: user.userName
@@ -47,14 +45,30 @@ router.get('/threads', (req, res, next) => {
 });
 
 router.delete('/', (req, res, next) => {
+	const id = res.get('id');
+
 	const password = req.body.password;
 
-	User.findOne(res.get('id'))
+	User.findOne({ _id: res.get('id') })
 		.then((user) => {
 			if (bcrypt.compareSync(password, user.password)) {
 				User.findByIdAndRemove(res.get('id'))
 					.then(() => {
-						res.status(200).json('user deleted!');
+						// First delete all friendship relation
+						session
+							.run(`MATCH (:User {userId: "${id}"})-[r:FRIENDED]-(:User) DELETE r;`)
+							.then(() => {
+								// Then delete User
+								session.run(`MATCH (u:User {userId: "${id}"}) DELETE u;`).catch((error) => {
+									res.status(500).json({ message: `Unable to find user`, error: error });
+								});
+							})
+							.then(() => {
+								res.status(200).json({ message: `User ${id} succesfully deleted!` });
+							})
+							.catch((error) => {
+								res.status(500).json({ message: 'Unable to find user', error: error });
+							});
 					})
 					.catch((error) => {
 						next(error);
