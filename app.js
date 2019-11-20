@@ -34,7 +34,7 @@ mongoose.connection
 		console.log('Connection is open!');
 		logger.log('Connection is open');
 
-		const port = 8080 || process.env.PORT;
+		const port = process.env.PORT || 8080;
 		app.listen(port, () => {
 			console.log(`Server is open on port ${port}!`);
 			logger.log(`Server is up and running on port ${port}`);

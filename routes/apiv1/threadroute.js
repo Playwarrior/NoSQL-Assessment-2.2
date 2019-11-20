@@ -55,8 +55,12 @@ router.post('', (req, res, next) => {
 
 router.post('/:id/comment', (req, res, next) => {
 	NullSector.hasThread({ _id: req.params.id }, (error, bool, thread) => {
-		if (error) next(error);
-		else if (!bool) next(new Error('No thread with the Id: ' + req.params.id));
+		if (error)
+			next(error);
+
+		else if (!bool)
+			res.status(204).json('No thread with Id: ' + req.params.id);
+
 		else {
 			const comment = new Comment({
 				userId: res.get('id'),
@@ -78,8 +82,12 @@ router.post('/:id/comment', (req, res, next) => {
 
 router.put('/:id/upvote', (req, res, next) => {
 	NullSector.hasThread({ _id: req.params.id }, (error, bool, thread) => {
-		if (error) next(error);
-		else if (!bool) next(new Error('No thread with Id: ' + req.params.id));
+		if (error)
+			next(error);
+
+		else if (!bool)
+			res.status(204).json('No thread with Id: ' + req.params.id);
+
 		else {
 			let upVotes = thread.votesOfUsers.upVotes;
 			let downVotes = thread.votesOfUsers.downVotes;
@@ -108,8 +116,12 @@ router.put('/:id/upvote', (req, res, next) => {
 
 router.put('/:id/downvote', (req, res, next) => {
 	NullSector.hasThread({ _id: req.params.id }, (error, bool, thread) => {
-		if (error) next(error);
-		else if (!bool) next(new Error('No thread with Id: ' + req.params.id));
+		if (error)
+			next(error);
+
+		else if (!bool)
+			res.status(204).json('No thread with Id: ' + req.params.id);
+
 		else {
 			let upVotes = thread.votesOfUsers.upVotes;
 			let downVotes = thread.votesOfUsers.downVotes;
@@ -170,7 +182,7 @@ router.get('/updates/friends', (req, res, next) => {
 	assert(typeof req.body.length === 'number', 'length is not a valid number!');
 
 	const userId = res.get('id');
-	const getLength = req.body.length;
+	let getLength = req.body.length;
 
 	if (req.body.length < 1) {
 		getLength = 1;
@@ -182,7 +194,7 @@ router.get('/updates/friends', (req, res, next) => {
 			.then((result) => {
 				const values = result.records[0]._fields[0];
 
-				const valuesArray = [];
+				let valuesArray = [];
 
 				for (i = 0; i < values.length; i++) {
 					valuesArray.push(ObjectId(values[i]));
@@ -211,8 +223,12 @@ router.get('/updates/friends', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
 	NullSector.hasThread({ _id: req.params.id }, (error, bool, thread) => {
-		if (error) next(error);
-		else if (!bool) next(new Error('No thread with Id: ' + req.params.id));
+		if (error)
+			next(error);
+
+		else if (!bool)
+			res.status(204).json('No thread with Id: ' + req.params.id);
+
 		else {
 			thread
 				.update({
@@ -230,8 +246,12 @@ router.put('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
 	NullSector.hasThread({ _id: req.params.id, userId: res.get('id') }, (error, bool, thread) => {
-		if (error) next(error);
-		else if (!bool) next(new Error('No thread found with Id: ' + req.params.id));
+		if (error)
+			next(error);
+
+		else if (!bool)
+			res.status(204).json('No thread with Id: ' + req.params.id);
+
 		else {
 			Promise.all([ thread.remove(), Comment.deleteMany({ threadId: req.params.id }) ])
 				.then(() => {
