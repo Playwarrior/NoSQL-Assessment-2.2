@@ -12,7 +12,7 @@ router.post('/:id', (req, res, next) => {
             next(error);
 
         else if (!bool)
-            next(new Error('No comment found with the Id: ' + req.params.comment));
+            res.status(204).json('No comment found with Id: ' + req.params.id);
 
         else {
             const comment = new Comment({
@@ -45,7 +45,7 @@ router.get('/:id', (req, res, next) => {
             next(error);
 
         else if (!bool)
-            next(new Error('No comment found with the Id: ' + req.params.id));
+            res.status(204).json('No comment found with Id: ' + req.params.id);
 
         else
             res.status(200).json(comment);
@@ -58,7 +58,7 @@ router.put('/:id', (req, res, next) => {
             next(error);
 
         else if (!bool)
-            next(new Error('No comment found with the Id: ' + req.params.id));
+            res.status(204).json('No comment found with Id: ' + req.params.id);
 
         else {
             comment.update({content: req.body.content}).then(() => {
@@ -76,7 +76,7 @@ router.put('/:id/upvote', (req, res, next) => {
             next(error);
 
         else if (!bool)
-            next(new Error('No comment found with the Id: ' + req.params.id));
+            res.status(204).json('No comment found with Id: ' + req.params.id);
 
         else {
             let upVotes = comment.votesOfUsers.upVotes;
@@ -107,7 +107,7 @@ router.put('/:id/downvote', (req, res, next) => {
             next(error);
 
         else if (!bool)
-            next(new Error('No comment found with the Id: ' + req.params.id));
+            res.status(204).json('No comment found with Id: ' + req.params.id);
 
         else {
             let upVotes = comment.votesOfUsers.upVotes;
@@ -138,7 +138,7 @@ router.delete('/:id', (req, res, next) => {
             next(error);
 
         else if (!bool)
-            next(new Error('No comment found with Id: ' + req.params.id));
+            res.status(204).json('No comment found with Id: ' + req.params.id);
 
         else {
             comment.remove().then(() => {
