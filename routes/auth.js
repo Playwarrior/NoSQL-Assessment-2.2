@@ -44,10 +44,10 @@ router.post('/register', (req, res, next) => {
 			})
 			.then(() => {
 				session
-					.run(`CREATE (a:User {username: "${b.userName}", userId: "${newUser._id}"})`)
+					.run(`CREATE (a:User {username: "${b.userName}", userId: "${newUser._id}"}) RETURN a.username;`)
 					.then(() => {
-						session.close();
 						res.status(200).json({ description: 'Succesfully registered!' });
+						session.close();
 					})
 					.catch((error) => {
 						console.error(error);
