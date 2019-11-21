@@ -185,46 +185,46 @@ router.get('/:id', (req, res, next) => {
 
 // GET: updates from friends
 router.get('/updates/friends', (req, res, next) => {
-    assert(typeof req.body.length === 'number', 'length is not a valid number!');
+	assert(typeof req.body.length === 'number', 'length is not a valid number!');
 
-    const userId = res.get('id');
-    let getLength = req.body.length;
+	const userId = res.get('id');
+	let getLength = req.body.length;
 
-    if (req.body.length < 1) {
-        getLength = 1;
-    }
+	if (req.body.length < 1) {
+		getLength = 1;
+	}
 
-    try {
-        session
-            .run(`MATCH (a:User {userId: "${userId}"})-[r*1..${getLength}]-(b) return collect(DISTINCT b.userId);`)
-            .then((result) => {
-                const values = result.records[0]._fields[0];
+	try {
+		session
+			.run(`MATCH (a:User {userId: "${userId}"})-[r*1..${getLength}]-(b) return collect(DISTINCT b.userId);`)
+			.then((result) => {
+				const values = result.records[0]._fields[0];
 
-                let valuesArray = [];
+				let valuesArray = [];
 
-                for (i = 0; i < values.length; i++) {
-                    valuesArray.push(ObjectId(values[i]));
-                }
+				for (i = 0; i < values.length; i++) {
+					valuesArray.push(ObjectId(values[i]));
+				}
 
-                return valuesArray;
-            })
-            .then((valuesArray) => {
-                Thread.find({userId: {$in: valuesArray}})
-                    .then((threads) => {
-                        res.status(200).json({threads});
-                    })
-                    .catch((error) => {
-                        res.status(500).json({message: `Unable to find any threads`, error: error});
-                    });
-            })
-            .catch((error) => {
-                res.status(500).json({message: `Unable to find any friendship relation`, error: error});
-            });
+				return valuesArray;
+			})
+			.then((valuesArray) => {
+				Thread.find({ userId: { $in: valuesArray } })
+					.then((threads) => {
+						res.status(200).json({ threads });
+					})
+					.catch((error) => {
+						res.status(500).json({ message: `Unable to find any threads`, error: error });
+					});
+			})
+			.catch((error) => {
+				res.status(500).json({ message: `Unable to find any friendship relation`, error: error });
+			});
 
-        session.close();
-    } catch (ex) {
-        next(ex);
-    }
+		session.close();
+	} catch (ex) {
+		next(ex);
+	}
 });
 
 router.put('/:id', (req, res, next) => {

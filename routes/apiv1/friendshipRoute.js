@@ -101,7 +101,7 @@ router.get('/', (req, res, next) => {
 	session.close();
 });
 
-// DELETE: Remove a friendship
+// DELETE: Remove a friendship relation
 router.delete('/', (req, res, next) => {
 	try {
 		const usernameFirst = req.body.firstUsername;
@@ -129,27 +129,15 @@ router.delete('/', (req, res, next) => {
 	}
 });
 
-// DELETE: Delete User and all its friendship relations
+// DELETE: Delete all User's friendship relations
 router.delete('/users', (req, res, next) => {
 	try {
-		const userName = req.body.userName;
+		const id = res.get('id');
 
-		assert(typeof userName === 'string', 'userName is not a string!');
-
-		// First delete all friendship relation
 		session
-			.run(`MATCH (:User {username: "${userName}"})-[r:FRIENDED]-(:User) DELETE r;`)
-			.catch((error) => {
-				res.status(500).json({ message: `Unable to find user`, error: error });
-			})
+			.run(`MATCH (:User {userId: "${id}"})-[r:FRIENDED]-(:User) DELETE r;`)
 			.then(() => {
-				// Then delete User
-				session.run(`MATCH (u:User {username: "${userName}"}) DELETE u;`).catch((error) => {
-					res.status(500).json({ message: `Unable to find user`, error: error });
-				});
-			})
-			.then(() => {
-				res.status(200).json({ message: `User ${userName} succesfully deleted!` });
+				res.status(200).json({ message: `User ${id} friendship relations succesfully deleted!` });
 			})
 			.catch((error) => {
 				res.status(500).json({ message: `Unable to find user`, error: error });
