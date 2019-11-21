@@ -44,10 +44,10 @@ router.post('/register', (req, res, next) => {
 			})
 			.then(() => {
 				session
-					.run(`CREATE (a:User {username: "${b.userName}", userId: "${newUser._id}"})`)
+					.run(`CREATE (a:User {username: "${b.userName}", userId: "${newUser._id}"}) RETURN a.username;`)
 					.then(() => {
-						session.close();
 						res.status(200).json({ description: 'Succesfully registered!' });
+						session.close();
 					})
 					.catch((error) => {
 						console.error(error);
@@ -102,11 +102,19 @@ router.put('/register', (req, res, next) => {
 	try {
 		const body = req.body;
 
-		User.findOne({ userName: body.username })
+		const bUsername = body.username;
+		const bPass = body.password;
+		const bNewPass = body.newPassword;
+
+		assert(typeof bUsername === 'string', 'username is not a string!');
+		assert(typeof bPass === 'string', 'password is not a string!');
+		assert(typeof bNewPass === 'string', 'newPassword is not a string!');
+
+		User.findOne({ userName: bUsername })
 			.then((user) => {
-				if (bcrypt.compareSync(body.password, user.password)) {
+				if (bcrypt.compareSync(bPass, user.password)) {
 					User.findByIdAndUpdate(user._id, {
-						password: bcrypt.hashSync(body.newPassword, saltRounds)
+						password: bcrypt.hashSync(bNewPass, saltRounds)
 					})
 						.then(() => {
 							res.status(200).json('User updated!');
