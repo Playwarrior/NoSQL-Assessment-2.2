@@ -1,13 +1,5 @@
 const neo4j = require('neo4j-driver').v1;
 
-const logger = require('tracer').dailyfile({
-	root: './logs',
-	maxLogFiles: 10,
-	allLogsFileName: 'studdit-app',
-	format: '{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})',
-	dateformat: 'HH:MM:ss.L'
-});
-
 const connection = require('../connection.json');
 
 const isTesting = connection.testing;
@@ -33,7 +25,5 @@ const driver = neo4j.driver(connectionString, neo4j.auth.basic(username, passwor
 });
 
 const session = driver.session();
-
-console.log(session);
 
 module.exports = session;

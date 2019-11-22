@@ -7,14 +7,6 @@ const router = express.Router();
 const User = require('../models/user');
 const jwt = require('../helpers/jwt');
 
-const logger = require('tracer').dailyfile({
-	root: '../logs',
-	maxLogFiles: 10,
-	allLogsFileName: 'studdit-app',
-	format: '{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})',
-	dateformat: 'HH:MM:ss.L'
-});
-
 // Neo4j helper
 const session = require('../helpers/neo4jUtils');
 
@@ -39,7 +31,6 @@ router.post('/register', (req, res, next) => {
 		newUser
 			.save()
 			.then((message) => {
-				logger.log(`New user registered: ${newUser.toString}`);
 				return message;
 			})
 			.then(() => {
@@ -55,7 +46,6 @@ router.post('/register', (req, res, next) => {
 					});
 			})
 			.catch((err) => {
-				logger.error(err);
 				console.error(err);
 
 				res.status(500).json({ error: err });
@@ -76,8 +66,6 @@ router.post('/login', (req, res, next) => {
 		User.findOne({ userName: `${b.userName}` })
 			.then((result) => {
 				if (bcrypt.compareSync(b.password, result.password)) {
-					logger.log(`Logged in: user '${result.userName}'`);
-
 					const token = jwt.encodeToken(result._id);
 
 					res.status(200).json({
@@ -85,8 +73,6 @@ router.post('/login', (req, res, next) => {
 						token: `${token}`
 					});
 				} else {
-					logger.log('Attempted login failed: ' + `${b}`);
-
 					res.status(401).json({ description: 'Login failed' });
 				}
 			})

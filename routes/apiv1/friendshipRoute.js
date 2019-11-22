@@ -3,13 +3,6 @@ const router = express.Router();
 
 const assert = require('assert');
 
-const logger = require('tracer').dailyfile({
-	root: './logs',
-	maxLogFiles: 10,
-	allLogsFileName: 'studdit-app',
-	format: '{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})',
-	dateformat: 'HH:MM:ss.L'
-});
 
 const session = require('../../helpers/neo4jUtils');
 

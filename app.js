@@ -1,14 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const logger = require('tracer').dailyfile({
-	root: './logs',
-	maxLogFiles: 10,
-	allLogsFileName: 'studdit-app',
-	format: '{{timestamp}} <{{title}}> {{message}} (in {{file}}:{{line}})',
-	dateformat: 'HH:MM:ss.L'
-});
-
 const apiv1 = require('./routes/apiv1');
 
 const auth = require('./routes/auth');
@@ -32,17 +24,14 @@ if (!connection.testing) {
 mongoose.connection
 	.once('open', () => {
 		console.log('Connection is open!');
-		logger.log('Connection is open');
 
 		const port = process.env.PORT || 8080;
 		app.listen(port, () => {
 			console.log(`Server is open on port ${port}!`);
-			logger.log(`Server is up and running on port ${port}`);
 		});
 	})
 	.on('error', (error) => {
 		console.warn('Connection failed!', error);
-		logger.error(`Connection failed: ${error}`);
 	});
 
 app.all('*', function(req, res, next) {
@@ -56,7 +45,6 @@ app.use('/auth', auth);
 function errorHandler(err, req, res, next) {
 	res.status(500).json({ error: err.message });
 	console.error(err);
-	logger.error(err);
 }
 
 app.use(errorHandler);
