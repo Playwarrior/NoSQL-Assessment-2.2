@@ -1,0 +1,504 @@
+12:32:42.90 <log> Connection is open (in app.js:36)
+12:33:51.24 <log> Connection is open (in app.js:36)
+12:33:51.32 <log> Server is up and running on port 8080 (in app.js:41)
+12:36:45.57 <log> Connection is open (in app.js:36)
+12:36:45.62 <log> Server is up and running on port 8080 (in app.js:41)
+12:36:50.14 <error> Error: No comment found with the Id: 5dd3d3d266108d04582aa71c
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:52:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+12:37:00.24 <error> Error: No comment found with the Id: 5dd3d3dc66108d04582aa71e
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:83:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+12:37:10.32 <error> Error: No comment found with the Id: 5dd3d3e666108d04582aa720
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:34:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+12:37:20.47 <error> Error: No comment found with Id: 5dd3d3f066108d04582aa725
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:114:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+12:37:31.06 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:11:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+12:37:31.19 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+12:39:34.37 <log> Connection is open (in app.js:34)
+12:39:34.43 <log> Server is up and running on port 8080 (in app.js:39)
+12:39:57.75 <log> Connection is open (in app.js:34)
+12:39:57.80 <log> Server is up and running on port 8080 (in app.js:39)
+12:46:46.93 <error> Error: No comment found with the Id: 5dd3d5be045b4a3ef462558e
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:52:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+12:48:08.83 <log> Connection is open (in app.js:34)
+12:48:08.89 <log> Server is up and running on port 8080 (in app.js:39)
+12:48:14.11 <error> Error: No comment found with the Id: 5dd3d5be045b4a3ef462558e
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:52:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:15:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+12:48:48.22 <log> Connection is open (in app.js:34)
+12:48:48.24 <log> Server is up and running on port 8080 (in app.js:39)
+12:48:51.03 <error> Error: No comment found with the Id: 5dd3d5be045b4a3ef462558e
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:52:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:16:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+12:50:13.51 <error> Error: No comment found with the Id: 5dd3d5be045b4a3ef462558e
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:52:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:16:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+12:53:13.17 <error> Error: No comment found with the Id: 5dd3d5be045b4a3ef462558e
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:21:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:16:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+12:54:50.49 <log> Connection is open (in app.js:34)
+12:54:50.51 <log> Server is up and running on port 8080 (in app.js:39)
+12:54:58.09 <error> ReferenceError: ObjectId is not defined
+    at router.get (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:16:33)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:281:22
+    at param (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:335:12) (in app.js:58)
+12:56:04.28 <log> Connection is open (in app.js:34)
+12:56:04.32 <log> Server is up and running on port 8080 (in app.js:39)
+12:56:17.70 <error> Error: No comment found with the Id: 5dd3d5be045b4a3ef462558e
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:23:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:16:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+12:57:01.65 <log> Connection is open (in app.js:34)
+12:57:01.72 <log> Server is up and running on port 8080 (in app.js:39)
+12:59:06.62 <log> Connection is open (in app.js:34)
+12:59:06.67 <log> Server is up and running on port 8080 (in app.js:39)
+12:59:16.69 <log> Connection is open (in app.js:34)
+12:59:16.75 <log> Server is up and running on port 8080 (in app.js:39)
+12:59:20.76 <error> Error: No comment found with the Id: 5dd3d5be045b4a3ef462558e
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:23:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:15:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+12:59:53.30 <log> Connection is open (in app.js:34)
+12:59:53.35 <log> Server is up and running on port 8080 (in app.js:39)
+13:03:11.15 <error> Connection failed: Error: queryTxt EREFUSED cluster0-brmkk.mongodb.net (in app.js:44)
+13:03:23.60 <log> Connection is open (in app.js:34)
+13:03:23.67 <log> Server is up and running on port 8080 (in app.js:39)
+13:04:52.18 <log> Connection is open (in app.js:34)
+13:04:52.23 <log> Server is up and running on port 8080 (in app.js:39)
+13:05:20.14 <log> Connection is open (in app.js:34)
+13:05:20.19 <log> Server is up and running on port 8080 (in app.js:39)
+13:05:36.58 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:11:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:05:36.72 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:07:12.08 <log> Connection is open (in app.js:34)
+13:07:12.13 <log> Server is up and running on port 8080 (in app.js:39)
+13:07:35.63 <error> Error: No comment found with the Id: 5dd3d5be045b4a3ef462558e
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:36:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:10:09.60 <error> Error: No comment found with the Id: 5dd3da8111c544111cf20ffe
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:36:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:12:37.56 <error> Error: No comment found with the Id: 5dd3da8111c544111cf20ffe
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:36:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:13:43.70 <log> Connection is open (in app.js:34)
+13:13:43.75 <log> Server is up and running on port 8080 (in app.js:39)
+13:17:37.78 <log> Connection is open (in app.js:34)
+13:17:37.84 <log> Server is up and running on port 8080 (in app.js:39)
+13:17:44.30 <error> Error: No comment found with the Id: 5dd3da8111c544111cf20ffe
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:36:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:15:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:20:16.59 <log> Connection is open (in app.js:34)
+13:20:16.62 <log> Server is up and running on port 8080 (in app.js:39)
+13:20:23.83 <log> Connection is open (in app.js:34)
+13:20:23.90 <log> Server is up and running on port 8080 (in app.js:39)
+13:20:40.27 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:11:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:20:40.39 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:22:48.76 <log> Connection is open (in app.js:34)
+13:22:48.79 <log> Server is up and running on port 8080 (in app.js:39)
+13:22:54.63 <error> Error: No comment found with the Id: 5dd3da8111c544111cf20ffe
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:23:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:22:55.34 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:11:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:22:55.47 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:23:20.96 <log> Connection is open (in app.js:34)
+13:23:21.02 <log> Server is up and running on port 8080 (in app.js:39)
+13:23:37.40 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:11:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:23:37.52 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:24:09.90 <log> Connection is open (in app.js:34)
+13:24:09.98 <log> Server is up and running on port 8080 (in app.js:39)
+13:24:17.40 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:11:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:24:17.54 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:25:13.18 <log> Connection is open (in app.js:34)
+13:25:13.26 <log> Server is up and running on port 8080 (in app.js:39)
+13:25:18.44 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:25:18.57 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:27:04.94 <log> Connection is open (in app.js:34)
+13:27:04.99 <log> Server is up and running on port 8080 (in app.js:39)
+13:27:10.26 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:27:10.39 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:49:54.85 <error> Connection failed: MongoParseError: Invalid connection string (in app.js:46)
+13:49:56.90 <log> Connection is open (in app.js:36)
+13:49:56.91 <log> Server is up and running on port 8080 (in app.js:41)
+13:50:03.94 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:50:04.08 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:50:40.82 <error> Connection failed: MongoParseError: Invalid connection string (in app.js:46)
+13:50:42.90 <log> Connection is open (in app.js:36)
+13:50:42.94 <log> Server is up and running on port 8080 (in app.js:41)
+13:50:48.16 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:50:50.36 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:51:06.33 <error> Connection failed: MongoParseError: Invalid connection string (in app.js:46)
+13:51:08.43 <log> Connection is open (in app.js:36)
+13:51:08.47 <log> Server is up and running on port 8080 (in app.js:41)
+13:51:13.64 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:51:13.79 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:52:45.63 <error> Connection failed: MongoParseError: Invalid connection string (in app.js:46)
+13:52:47.70 <log> Connection is open (in app.js:36)
+13:52:47.74 <log> Server is up and running on port 8080 (in app.js:41)
+13:52:55.14 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:52:55.28 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:53:16.69 <error> Connection failed: MongoParseError: Invalid connection string (in app.js:46)
+13:53:18.77 <log> Connection is open (in app.js:36)
+13:53:18.81 <log> Server is up and running on port 8080 (in app.js:41)
+13:53:24.25 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:53:24.40 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:53:33.91 <error> Connection failed: MongoParseError: Invalid connection string (in app.js:46)
+13:53:35.99 <log> Connection is open (in app.js:36)
+13:53:36.04 <log> Server is up and running on port 8080 (in app.js:41)
+13:53:41.69 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:53:41.82 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:54:00.71 <error> Connection failed: MongoParseError: Invalid connection string (in app.js:46)
+13:54:02.78 <log> Connection is open (in app.js:36)
+13:54:02.80 <log> Server is up and running on port 8080 (in app.js:41)
+13:54:08.04 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:54:08.18 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+13:56:56.80 <error> Connection failed: MongoParseError: Invalid connection string (in app.js:47)
+13:56:58.87 <log> Connection is open (in app.js:37)
+13:56:58.91 <log> Server is up and running on port 8080 (in app.js:42)
+13:57:06.38 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:61)
+13:57:06.52 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:61)
+13:58:45.77 <log> Connection is open (in app.js:34)
+13:58:45.82 <log> Server is up and running on port 8080 (in app.js:39)
+13:58:51.10 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:58:51.23 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:58)
+13:59:58.10 <log> Connection is open (in app.js:36)
+13:59:58.18 <log> Server is up and running on port 8080 (in app.js:41)
+14:00:03.77 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+14:00:03.90 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:60)
+14:01:16.59 <log> Connection is open (in app.js:35)
+14:01:16.63 <log> Server is up and running on port 8080 (in app.js:40)
+14:01:21.85 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:01:21.98 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:17:43.55 <log> Connection is open (in app.js:35)
+14:17:43.58 <log> Server is up and running on port 8080 (in app.js:40)
+14:17:48.30 <error> ReferenceError: comment is not defined
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\threadroute.js:80:28)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:17:58.99 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:17:59.12 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:19:11.45 <log> Connection is open (in app.js:35)
+14:19:11.53 <log> Server is up and running on port 8080 (in app.js:40)
+14:19:16.18 <error> ReferenceError: comment is not defined
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\threadroute.js:80:28)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:19:26.96 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:19:27.12 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:21:22.83 <log> Connection is open (in app.js:35)
+14:21:22.88 <log> Server is up and running on port 8080 (in app.js:40)
+14:24:13.38 <error> { SyntaxError: Unexpected string in JSON at position 40
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\body-parser\lib\types\json.js:89:19)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\body-parser\lib\read.js:121:18
+    at invokeCallback (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\raw-body\index.js:224:16)
+    at done (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\raw-body\index.js:213:7)
+    at IncomingMessage.onEnd (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\raw-body\index.js:273:7)
+    at IncomingMessage.emit (events.js:194:15)
+    at endReadableNT (_stream_readable.js:1125:12)
+    at process._tickCallback (internal/process/next_tick.js:63:19)
+  expose: true,
+  statusCode: 400,
+  status: 400,
+  body:
+   '{\n\t"title": "Windows 10 Tech support?"\n\t"content": "Why is the tech support of windows so damn slow"\n}',
+  type: 'entity.parse.failed' } (in app.js:59)
+14:27:54.64 <log> Connection is open (in app.js:35)
+14:27:54.71 <log> Server is up and running on port 8080 (in app.js:40)
+14:28:09.20 <error> { AssertionError [ERR_ASSERTION]: No valid token!
+    at router.all (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1.js:13:5)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:281:22
+    at param (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:335:12)
+  generatedMessage: false,
+  name: 'AssertionError [ERR_ASSERTION]',
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==' } (in app.js:59)
+14:32:20.93 <error> Error: No comment found with the Id: 5dd3ee9ac235b5232864d50a & ThreadId: 5dd3d56f045b4a3ef462558d
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\threadroute.js:75:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:33:45.97 <error> Error: No comment found with the Id: 5dd3ee9ac235b5232864d50a & ThreadId: 5dd3eca79388d023043c5d5a
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\threadroute.js:75:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:34:09.44 <error> Error: No comment found with the Id: 5dd3ee9ac235b5232864d50a & ThreadId: 5dd3eca79388d023043c5d5a
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\threadroute.js:75:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:34:19.01 <error> Error: No comment found with the Id: 5dd3ee9ac235b5232864d50a & ThreadId: 5dd3eca79388d023043c5d5a
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\threadroute.js:75:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:35:09.82 <log> Connection is open (in app.js:35)
+14:35:09.90 <log> Server is up and running on port 8080 (in app.js:40)
+14:35:21.78 <error> ReferenceError: comment is not defined
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\threadroute.js:80:28)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:14:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:35:57.23 <log> Connection is open (in app.js:35)
+14:35:57.26 <log> Server is up and running on port 8080 (in app.js:40)
+14:36:31.71 <error> ReferenceError: comment is not defined
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\threadroute.js:80:28)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:16:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:36:50.83 <log> Connection is open (in app.js:35)
+14:36:50.89 <log> Server is up and running on port 8080 (in app.js:40)
+14:36:56.04 <error> Error: No comment found with the Id: 5dd3ee9ac235b5232864d50a & ThreadId: 5dd3eca79388d023043c5d5a
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\threadroute.js:75:18)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:16:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:38:26.95 <log> Connection is open (in app.js:35)
+14:38:27.01 <log> Server is up and running on port 8080 (in app.js:40)
+14:38:37.95 <error> ReferenceError: comment is not defined
+    at NullSector.hasComment (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\commentroute.js:20:28)
+    at Comment.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\util\nullsector.js:16:9)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:39:29.03 <log> Connection is open (in app.js:35)
+14:39:29.09 <log> Server is up and running on port 8080 (in app.js:40)
+14:42:16.76 <log> Connection is open (in app.js:35)
+14:42:16.84 <log> Server is up and running on port 8080 (in app.js:40)
+14:43:43.71 <log> Connection is open (in app.js:35)
+14:43:43.77 <log> Server is up and running on port 8080 (in app.js:40)
+14:49:29.53 <log> Connection is open (in app.js:35)
+14:49:29.58 <log> Server is up and running on port 8080 (in app.js:40)
+14:49:37.18 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+14:49:37.33 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+20:59:57.25 <log> Connection is open (in app.js:35)
+20:59:57.34 <log> Server is up and running on port 8080 (in app.js:40)
+21:00:02.58 <error> TypeError: Cannot read property 'registerDate' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1\userroute.js:13:32)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+21:00:02.73 <error> TypeError: Cannot read property 'password' of null
+    at User.findOne.then (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\auth.js:90:56)
+    at process._tickCallback (internal/process/next_tick.js:68:7) (in app.js:59)
+23:04:17.16 <error> { AssertionError [ERR_ASSERTION]: No valid token!
+    at router.all (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\routes\apiv1.js:13:5)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:281:22
+    at param (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:174:3)
+    at router (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:47:12)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:275:10)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:127:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\app.js:49:5
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:137:13)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:131:14)
+    at Route.dispatch (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:281:22
+    at param (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:354:14)
+    at param (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:365:14)
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:410:3)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:275:10)
+    at urlencodedParser (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\body-parser\lib\types\urlencoded.js:91:7)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:275:10)
+    at jsonParser (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\body-parser\lib\types\json.js:110:7)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:275:10)
+    at expressInit (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\middleware\init.js:40:5)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:275:10)
+    at query (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\middleware\query.js:45:5)
+    at Layer.handle [as handle_request] (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:317:13)
+    at C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:335:12)
+    at next (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:275:10)
+    at Function.handle (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\router\index.js:174:3)
+    at Function.handle (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\application.js:174:10)
+    at Server.app (C:\Users\robin\WebstormProjects\NoSQL-Assessment-2.2\node_modules\express\lib\express.js:39:9)
+    at Server.emit (events.js:189:13)
+    at parserOnIncoming (_http_server.js:676:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:109:17)
+  generatedMessage: false,
+  name: 'AssertionError [ERR_ASSERTION]',
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==' } (in app.js:59)
