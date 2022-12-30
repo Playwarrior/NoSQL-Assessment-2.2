@@ -21,7 +21,7 @@
 		"bcryptjs": "^2.4.3",
 		"express": "^4.17.1",
 		"jwt-simple": "^0.5.6",
-		"mocha": "^6.2.2",
+		"mocha": "^10.2.0",
 		"moment": "^2.24.0",
 		"mongoose": "^5.7.9",
 		"neo4j-driver": "^1.7.6",
